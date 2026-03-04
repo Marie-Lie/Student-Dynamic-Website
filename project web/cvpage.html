@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Profiles Portfolio</title>
+    <link rel="stylesheet" href="allcss.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-close">
+                <span class="material-icons">close</span>
+            </div>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="Home.html">
+                    <span class="menu-icon material-icons">home</span>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="info l asle.html">
+                    <span class="menu-icon material-icons">search</span>
+                    <span class="menu-text">Research</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="cvpage.html">
+                    <span class="menu-icon material-icons">description</span>
+                    <span class="menu-text">CV</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="schedulepage.html">
+                    <span class="menu-icon material-icons">calendar_today</span>
+                    <span class="menu-text">Schedule</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="media.html">
+                    <span class="menu-icon material-icons">collections</span>
+                    <span class="menu-text">Media</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="contactus.html">
+                    <span class="menu-icon material-icons">email</span>
+                    <span class="menu-text">Contact</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="quizzespage.html">
+                    <span class="menu-icon material-icons">quiz</span>
+                    <span class="menu-text">Quiz</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Navigation Dots -->
+        <div class="cv-nav-dots">
+            <div class="cv-dot active" data-target="cv-profile-1"></div>
+            <div class="cv-dot" data-target="cv-profile-2"></div>
+            <div class="cv-dot" data-target="cv-profile-3"></div>
+        </div>
+        
+        <!-- Profile 1 -->
+        <section class="cv-profile-section" id="cv-profile-1">
+            <div class="cv-container">
+                <div class="cv-profile-content">
+                    <div class="cv-profile-text">
+                        <h1>Aya Chamas</h1>
+                        <h2>INFORMATION TECHNOLOGY</h2>
+                        <p>Specializing in coding with 2 years of experience, with a passion for building new things and exploring creative ideas through programming. </p>
+                        <p> When I’m not coding, I enjoy doing and developing many other hobbies — always looking for new ways to learn and grow.</p>
+                        <a href="cvaya.html" class="cv-button"><span>View Full CV</span></a>
+                    </div>
+                    <div class="cv-profile-image">
+                        <img src="ayachamas.jpg" alt="Aya">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profile 2 -->
+        <section class="cv-profile-section" id="cv-profile-2">
+            <div class="cv-container">
+                <div class="cv-profile-content">
+                    <div class="cv-profile-text">
+                        <h1>Roya Kais</h1>
+                        <h2>Computer Science</h2>
+                        <p>I’ve gained practical experience through academic projects and part-time roles, and I’m committed to continuous learning, innovation, and contributing to meaningful work.</p>
+                        <a href="cvroya.html" class="cv-button"><span>View Full CV</span></a>
+                    </div>
+                    <div class="cv-profile-image">
+                        <img src="roya.jpeg" alt="Roya Kais">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profile 3 -->
+        <section class="cv-profile-section" id="cv-profile-3">
+            <div class="cv-container">
+                <div class="cv-profile-content">
+                    <div class="cv-profile-text">
+                        <h1>Marie-Lie Kadado</h1>
+                        <h2>Computer Science </h2>
+                        <p>Focusing on AI and game development. Passionate about combining creativity and technology to build dynamic, AI-driven gaming experiences.</p>
+						<p>Outside of tech, I’m a singer and artist with a deep love for my cultural roots. I enjoy performing traditional music and expressing my creativity through drawing.</p>
+                        <a href="cvmarielie.html" class="cv-button"><span>View Full CV</span></a>
+                    </div>
+                    <div class="cv-profile-image">
+                        <img src="marie.jpeg" alt="Marie-Lie">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Navigation dots functionality
+        const cvDots = document.querySelectorAll('.cv-dot');
+        const cvSections = document.querySelectorAll('.cv-profile-section');
+        
+        cvDots.forEach(dot => { //dot on click takes us smoothly to the current cv section
+            dot.addEventListener('click', () => {
+                const targetId = dot.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active dot by removing all animation from al dots and adding it to the dot that was clicked on
+                cvDots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+            });
+        });
+        
+        // Update active dot on scroll
+        window.addEventListener('scroll', () => { //when scrolling
+            let currentSection = '';
+            
+			//before reaching fully viewport 
+            cvSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+				//when the section is seen but hasn't reached the top yet
+                if (window.scrollY >= sectionTop - 200 && window.scrollY < sectionTop + sectionHeight - 200) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            //remove any animation on dots and added on the dot for the current open section
+            cvDots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.getAttribute('data-target') === currentSection) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+        
+        // Animation trigger on scroll
+        const cvAnimateOnScroll = () => {
+            const cvProfileTexts = document.querySelectorAll('.cv-profile-text');
+            const cvProfileImages = document.querySelectorAll('.cv-profile-image');
+            const cvButtons = document.querySelectorAll('.cv-button');
+            
+            const triggerBottom = window.innerHeight / 5 * 4;
+            
+            cvProfileTexts.forEach(text => {
+                const textTop = text.getBoundingClientRect().top;
+                
+                if (textTop < triggerBottom) {
+                    text.classList.add('cv-animate');
+                }
+            });
+            
+            cvProfileImages.forEach(image => {
+                const imageTop = image.getBoundingClientRect().top;
+                
+                if (imageTop < triggerBottom) {
+                    image.classList.add('cv-animate');
+                }
+            });
+            
+            cvButtons.forEach(button => {
+                const buttonTop = button.getBoundingClientRect().top;
+                
+                if (buttonTop < triggerBottom) {
+                    button.classList.add('cv-animate');
+                }
+            });
+        };
+        
+        // Initial check on load
+        window.addEventListener('load', cvAnimateOnScroll);
+        
+        // Check on scroll
+        window.addEventListener('scroll', cvAnimateOnScroll);
+
+        // Menu functionality
+		//grab elements from HTML
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+
+		//add css active class
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.style.display = 'none';
+        }
+
+		//add css active class
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.style.display = 'flex';
+        }
+		
+        menuToggle.addEventListener('click', openMenu); //on click open menu
+        menuClose.addEventListener('click', closeMenu); //on click close menu
+        menuOverlay.addEventListener('click', closeMenu); //darken the background, prevent interation under it
+
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.menu-item a').forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+    </script>
+	<footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>

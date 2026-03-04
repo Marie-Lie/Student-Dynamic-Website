@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Profiles Portfolio</title>
+    <link rel="stylesheet" href="allcss.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="allcss.css">
+</head>
+<body>
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-close">
+                <span class="material-icons">close</span>
+            </div>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="Home.html">
+                    <span class="menu-icon material-icons">home</span>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="info l asle.html">
+                    <span class="menu-icon material-icons">search</span>
+                    <span class="menu-text">Research</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="cvpage.html">
+                    <span class="menu-icon material-icons">description</span>
+                    <span class="menu-text">CV</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="schedulepage.html">
+                    <span class="menu-icon material-icons">calendar_today</span>
+                    <span class="menu-text">Schedule</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="media.html">
+                    <span class="menu-icon material-icons">collections</span>
+                    <span class="menu-text">Media</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="contactus.html">
+                    <span class="menu-icon material-icons">email</span>
+                    <span class="menu-text">Contact</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="quizzespage.html">
+                    <span class="menu-icon material-icons">quiz</span>
+                    <span class="menu-text">Quiz</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Navigation Dots -->
+        <div class="nav-dots-schedule">
+            <div class="dot-schedule active-schedule" data-target-schedule="profile-1-schedule"></div>
+            <div class="dot-schedule" data-target-schedule="profile-2-schedule"></div>
+            <div class="dot-schedule" data-target-schedule="profile-3-schedule"></div>
+        </div>
+        
+        <!-- Profile 1 - Left -->
+        <section class="profile-section-schedule" id="profile-1-schedule">
+            <div class="container-schedule">
+                <div class="profile-content-schedule">
+                    <div class="profile-text-schedule">
+                        <h1>Aya Chamas</h1>
+                        <h2>INFORMATION TECHNOLOGY</h2>
+                        <p>Specializing in coding with 2 years of experience, with a passion for building new things and exploring creative ideas through programming. When I’m not coding, I enjoy doing and developing many other hobbies — always looking for new ways to learn and grow.</p>
+                        <a href="schedule aya.html" class="schedule-button-schedule">
+                            <span>View<br>Schedule</span>
+                        </a>
+                    </div>
+                    <div class="profile-image-schedule">
+                        <img src="ayachamas.jpg" alt="Aya">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profile 2 - Right -->
+        <section class="profile-section-schedule" id="profile-2-schedule">
+            <div class="container-schedule">
+                <div class="profile-content-schedule">
+                    <div class="profile-text-schedule">
+                        <h1>Roya Kais</h1>
+                        <h2>Computer Science</h2>
+                        <p>I'm a computer science student and digital creator who loves coding, storytelling, and making meaningful content about culture, mental health, and personal growth.</p>
+                        <a href="Scheduleroya.html" class="schedule-button-schedule">
+                            <span>View<br>Schedule</span>
+                        </a>
+                    </div>
+                    <div class="profile-image-schedule">
+                        <img src="roya.jpeg" alt="Roya Kais">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Profile 3 - Left -->
+        <section class="profile-section-schedule" id="profile-3-schedule">
+            <div class="container-schedule">
+                <div class="profile-content-schedule">
+                    <div class="profile-text-schedule">
+                        <h1>Marie-lie Kadado </h1>
+                        <h2>Computer Science </h2>
+                        <p>Focusing on AI and game development. Passionate about combining creativity and technology to build dynamic, AI-driven gaming experiences.Outside of tech, I’m a singer and artist with a deep love for my cultural roots. I enjoy performing traditional music and expressing my creativity through drawing</p>
+                        <a href="schedule marielie.html" class="schedule-button-schedule">
+                            <span>View<br>Schedule</span>
+                        </a>
+                    </div>
+                    <div class="profile-image-schedule">
+                        <img src="marie.jpeg" alt="Marie-lie">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // Menu functionality
+		//grab elements from HTML
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+
+		//add css active class
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.style.display = 'none';
+        }
+
+		//add css active class
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.style.display = 'flex';
+        }
+		
+        menuToggle.addEventListener('click', openMenu); //on click open menu
+        menuClose.addEventListener('click', closeMenu); //on click close menu
+        menuOverlay.addEventListener('click', closeMenu); //darken the background, prevent interation under it
+
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.menu-item a').forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+
+        // Navigation dots functionality
+        const dotsSchedule = document.querySelectorAll('.dot-schedule');
+        const sectionsSchedule = document.querySelectorAll('.profile-section-schedule');
+        
+		//when clicking on a dot,go to the targeted schedule smoothly
+        dotsSchedule.forEach(dotSchedule => {
+            dotSchedule.addEventListener('click', () => {
+                const targetIdSchedule = dotSchedule.getAttribute('data-target-schedule');
+                const targetSectionSchedule = document.getElementById(targetIdSchedule);
+                
+                targetSectionSchedule.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Update active dot
+				//remove the active from all dots then add it to the clicked one
+                dotsSchedule.forEach(dSchedule => dSchedule.classList.remove('active-schedule'));
+                dotSchedule.classList.add('active-schedule');
+            });
+        });
+        
+        // Update active dot on scroll
+        window.addEventListener('scroll', () => { //function runs everytime the user scrolls
+            let currentSectionSchedule = '';
+            
+            sectionsSchedule.forEach(sectionSchedule => { //loop through all profile-section-schedule
+                const sectionTopSchedule = sectionSchedule.offsetTop;
+                const sectionHeightSchedule = sectionSchedule.clientHeight;
+                
+				//Check if the current section is in the visible viewport (with a 200px margin). If yes, mark it as the current section schedule
+				//-200 makes the dot switch a little bit before the section fully reaches the top
+                if (window.scrollY >= sectionTopSchedule - 200 && window.scrollY < sectionTopSchedule + sectionHeightSchedule - 200) {
+                    currentSectionSchedule = sectionSchedule.getAttribute('id');
+                }
+            });
+            //remove active-schedule dot from all dots and it to the one that matches the current data-target-schedule
+            dotsSchedule.forEach(dotSchedule => {
+                dotSchedule.classList.remove('active-schedule');
+                if (dotSchedule.getAttribute('data-target-schedule') === currentSectionSchedule) {
+                    dotSchedule.classList.add('active-schedule');
+                }
+            });
+        });
+        
+        // Animation trigger on scroll
+        const animateOnScrollSchedule = () => {
+            const profileTextsSchedule = document.querySelectorAll('.profile-text-schedule');
+            const profileImagesSchedule = document.querySelectorAll('.profile-image-schedule');
+            const scheduleButtonsSchedule = document.querySelectorAll('.schedule-button-schedule');
+            
+			//trigger it on a specific height for the element on the screen, when it didn't fully reach the top
+            const triggerBottomSchedule = window.innerHeight / 5 * 4;
+            
+            profileTextsSchedule.forEach(textSchedule => {
+                const textTopSchedule = textSchedule.getBoundingClientRect().top;  //takes vertical distance from the top of the view to the top of the element
+                
+                if (textTopSchedule < triggerBottomSchedule) { //if element is visible, add animate-schedule
+                    textSchedule.classList.add('animate-schedule');
+                }
+            });
+            //same for image
+            profileImagesSchedule.forEach(imageSchedule => {
+                const imageTopSchedule = imageSchedule.getBoundingClientRect().top;
+                
+                if (imageTopSchedule < triggerBottomSchedule) {
+                    imageSchedule.classList.add('animate-schedule');
+                }
+            });
+            //same for button
+            scheduleButtonsSchedule.forEach(buttonSchedule => {
+                const buttonTopSchedule = buttonSchedule.getBoundingClientRect().top;
+                
+                if (buttonTopSchedule < triggerBottomSchedule) {
+                    buttonSchedule.classList.add('animate-schedule');
+                }
+            });
+        };
+        
+        // Initial check on load
+        window.addEventListener('load', animateOnScrollSchedule);
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScrollSchedule);
+    </script>
+	<footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>
+   

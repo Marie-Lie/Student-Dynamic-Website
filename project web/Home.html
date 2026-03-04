@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="allcss.css">
+</head>
+<body>
+    <div class="hero-section">
+        <div id="particles-js"></div>
+        <div class="header-content">
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzM5b2pzdmJxdGY4aGtvNDh5NXJ1MmN5MzV2c3BwbWIyazVkZnl6NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif" alt="Animated path">
+            </div>
+            <div class="welcome-text">
+                <h1>Welcome to our Website </h1>
+                <p><i>we hope you will like it :-)</i></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2 class="section-title">Our services</h2>
+        <div class="boxes-container">
+            <div class="box-row">
+                <div class="box">
+                    <div class="box-image">
+                        <img src="research.jpg" alt="research">
+                    </div>
+                    <div class="box-content">
+                        <h3>Research</h3>
+                        <p>Explore in-depth studies on internet infrastructure, web history, and regional statistics.</p>
+                        <a href="info l asle.html">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-image">
+                        <img src="cvlogo.jpg" alt="cv">
+                    </div>
+                    <div class="box-content">
+                        <h3>CV</h3>
+                        <p>We present our academic and professional credentials.</p>
+                        <a href="cvpage.html">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-image">
+                        <img src="schedule.jpg" alt="schedule">
+                    </div>
+                    <div class="box-content">
+                        <h3>Schedule</h3>
+                        <p>We Organize our academic calendar and important deadlines.</p>
+                        <a href="schedulepage.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-row">
+                <div class="box">
+                    <div class="box-image">
+                        <img src="Media.jpg" alt="media">
+                    </div>
+                    <div class="box-content">
+                        <h3>Media</h3>
+                        <p>Access educational resources and multimedia content.</p>
+                        <a href="Media.html">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-image">
+                        <img src="Contact Us.jpg" alt="Contact Us">
+                    </div>
+                    <div class="box-content">
+                        <h3>Contact Us</h3>
+                        <p>Get in touch with us.</p>
+                        <a href="contactus.html">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="box">
+                    <div class="box-image">
+                        <img src="quizlogo.jpg" alt="quiz">
+                    </div>
+                    <div class="box-content">
+                        <h3>Quiz 1</h3>
+                        <p>Test your knowledge.</p>
+                        <a href="quizzespage.html">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overview-section">
+        <h2 class="section-title">About This Website</h2>
+        <div class="overview-content">
+            <p>This website was created by three female students as part of a collaborative project. It features a brief introduction about each of us, along with general information related to our topic.</p>
+            <p>To make things more interactive and fun, we've also included a mini quiz to test your knowledge. We hope you enjoy exploring our site and learning something new along the way!</p>
+        </div>
+    </div>
+    
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button" id="chatbotButton">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3>Portal Guide</h3>
+                <i class="fas fa-times" id="closeChatbot"></i>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    Welcome to the Academic Portal! I'm your intelligent assistant here to help with:
+                    <br><br>• Research content and resources
+                    <br>• Student CVs and profiles
+                    <br>• Class schedules and timetables
+                    <br>• Portal navigation and features
+                    <br><br>How can I assist you today?
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="userInput" placeholder="Ask me anything about the portal...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize particle.js (the lines that moves on the background of the top home scene)
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { //80 particles
+                        "value": 80,
+                        "density": { //spread out on a virtual 800x800 area
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": { //color white
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false
+                    },
+                    "size": { //average size is 3
+                        "value": 3,
+                        "random": true
+                    },
+                    "line_linked": {
+                        "enable": true, //link lines
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true, //they move
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out", //does not go out of the screen, they fade
+                        "bounce": false
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": { //when mouse on a particle, it enable grab mode
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": { //when clicking on a particle, it adds 4 particles
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        }
+                    }
+                },
+                "retina_detect": true //detects if user is using hight screen resolution, then scales canvas properly and makes everything look smooth and clear
+            });
+
+            // Animate elements
+            setTimeout(() => {
+                document.querySelector('.gif-container').classList.add('animate');
+                document.querySelector('.welcome-text').classList.add('animate');
+            }, 500); //runs after 500 milliseconds (half a second) from when the page loads
+            
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.section-title, .box, .overview-content'); //targets these elements
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top; //takes vertical distance from the top of the view to the top of the element
+                    const screenPosition = window.innerHeight / 1.3; //trigger the animation before element fully enter the view
+                    
+                    if(elementPosition < screenPosition) { //if the element is visible, run animation
+                        element.classList.add('animate');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll); //do the animation when the user scroll
+            animateOnScroll();
+            
+            // Chatbot functionality
+			//select elements from the HTML code by their IDs
+            const chatbotButton = document.getElementById('chatbotButton');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const sendMessage = document.getElementById('sendMessage');
+            const userInput = document.getElementById('userInput');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            
+			//when clicking on the chatbot btn, if chatbot window aready displayed we hide it, if not displayed, show it and focus on the input field
+            chatbotButton.addEventListener('click', function() {
+                if (chatbotWindow.style.display === 'flex') {
+                    chatbotWindow.style.display = 'none';
+                } else {
+                    chatbotWindow.style.display = 'flex';
+                    userInput.focus();
+                }
+            });
+            
+			//when clicking on th X, hide chatbot window
+            closeChatbot.addEventListener('click', function() {
+                chatbotWindow.style.display = 'none';
+            });
+            
+            function addMessage(message, isUser) { //default isUser=true
+                const messageDiv = document.createElement('div'); //create message div that holds the msg
+                messageDiv.classList.add('message');
+                messageDiv.classList.add(isUser ? 'user-message' : 'bot-message'); //check if the message is from the user or the catbot (if isUser=true =>user msg, if isUser=false =>bot msg)
+                messageDiv.innerHTML = message; //add the message to the chatbot window
+                chatbotMessages.appendChild(messageDiv); //adds div msg to the chatbot message container (chatbotcontainer)
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight; //automaticly scroll to the bottom to show latest msg
+            }
+            
+			//add some initial sentences for the chatbot to say based on the topic
+            const knowledgeBase = {
+                greetings: [
+                    "Hello! How can I assist you with the academic portal today?",
+                    "Hi there! I'm here to help with any questions about the portal.",
+                    "Welcome! What would you like to know about our academic resources?"
+                ],
+                farewells: [
+                    "Goodbye! Feel free to return if you have more questions.",
+                    "Have a great day! Remember I'm here if you need more help.",
+                    "See you later! Don't hesitate to ask if you need anything else."
+                ],
+                thanks: [
+                    "You're welcome! Is there anything else I can help with?",
+                    "Happy to help! Let me know if you need further assistance.",
+                    "My pleasure! What else would you like to know?"
+                ],
+                research: {
+                    general: `The Research section contains comprehensive materials on:
+                            \n1. Internet Infrastructure:
+                            • Global network architecture
+                            • Physical components (cables, routers, data centers)
+                            • Decentralized structure benefits
+                            
+                            \n2. Web History:
+                            • Tim Berners-Lee's invention at CERN (1989)
+                            • Evolution from research tool to global platform
+                            • Key milestones in web development
+                            
+                            \n3. Regional Statistics:
+                            • Middle East internet penetration data
+                            • Lebanon-specific metrics and trends
+                            • Comparative analysis with global standards`,
+                    infrastructure: `Internet Infrastructure Details:
+                            \n• Comprises interconnected networks spanning globally
+                            \n• Physical components include:
+                            - Undersea cables (carry 99% of international data)
+                            - IXPs (Internet Exchange Points)
+                            - Data centers and server farms
+                            \n• Organizational structure involves:
+                            - ISPs (Internet Service Providers)
+                            - Regional internet registries
+                            - DNS root servers
+                            \n• Designed for redundancy and fault tolerance`,
+                    history: `Web History Timeline:
+                            \n• 1989: Tim Berners-Lee proposes WWW at CERN
+                            \n• 1991: First website goes live (info.cern.ch)
+                            \n• 1993: Mosaic browser introduces graphical interface
+                            \n• 1994: W3C founded to develop web standards
+                            \n• 2004: Web 2.0 era begins (social media, user content)
+                            \n• 2010s: Mobile revolution and responsive design
+                            \n• Present: Web3 and decentralized technologies emerging`,
+                    stats: `Internet Statistics (Middle East/Lebanon):
+                            \n🌍 Middle East (2023):
+                            • Average penetration: 70%
+                            • Leading countries:
+                              - UAE: 99% penetration
+                              - Qatar: 98% 
+                              - Saudi Arabia: 95%
+                            • Mobile-first usage predominant
+                            
+                            \n🇱🇧 Lebanon (2023):
+                            • 78% internet penetration
+                            • 6.5 million mobile users
+                            • Average speed: 8.2 Mbps
+                            • Challenges: Infrastructure limitations, economic factors`
+                },
+                cv: {
+                    general: `The CV section contains professional profiles for:
+                            \n• Roya - Computer Science student
+                            • Aya - Information Technology student
+                            • Marie-Lie - Computer Science student
+                            
+                            Each CV includes:
+                            - Contact information
+                            - Academic background
+                            - Technical skills
+                            - Project experience
+                            - Language proficiency
+                            
+                            Ask about a specific student for detailed information.`,
+                    roya: `Roya's Professional Profile:
+                            \n📌 Computer Science Student at USEK (2023-2026)
+                            \n📞 Contact: +961 76 751 182 | kaisroya@gmail.com
+                            
+                            🔧 Technical Skills:
+                            • Object-Oriented Programming
+                            • Web Development (HTML/CSS/JS)
+                            • MySQL Database Management
+                            • Networks and Security fundamentals
+                            
+                            🏆 Notable Projects:
+                            • Database Management System (MySQL)
+                            • Java Applications demonstrating OOP principles
+                            • Web Development final project
+                            
+                            🌍 Languages:
+                            • English (95%) | Arabic (50%) | French (15%)`,
+                    aya: `Aya's Professional Profile:
+                            \n📌 IT Student at USEK (2021-2024)
+                            \n📞 Contact: +961 79 101 638 | aya.email@example.com
+                            
+                            🔧 Technical Skills:
+                            • C++ Programming
+                            • Java (OOP)
+                            • MySQL Database
+                            • Web Programming (HTML/CSS/JS)
+                            
+                            🏆 Notable Projects:
+                            • Database Management System
+                            • Java OOP applications
+                            • C++ Data Structures implementation
+                            
+                            🌍 Languages:
+                            • Arabic (100%) | English (80%) | French (95%)`,
+                    marie: `Marie-Lie's Professional Profile:
+                            \n📌 Computer Science Student at USEK (2023-2025)
+                            \n📞 Contact: +961 71 794 698 | marielie.kadado@example.com
+                            
+                            🔧 Technical Skills:
+                            • JavaFX Programming
+                            • Java (OOP)
+                            • MySQL Database
+                            • Web Programming
+                            
+                            🏆 Notable Projects:
+                            • Restaurant Management System (JavaFX/MySQL)
+                            • "Guess the Flag" game (Java/JavaFX)
+                            
+                            🌍 Languages:
+                            • Arabic (85%) | English (90%) | French (90%)`
+                },
+                schedule: {
+                    general: `The Schedule section contains academic timetables for:
+                            \n• Roya
+                            • Aya
+                            • Marie-Lie
+                            
+                            Each schedule shows:
+                            - Course names and times
+                            - Weekly class distribution
+                            - Semester information
+                            
+                            Ask about a specific student's schedule for details.`,
+                    roya: `Roya's Spring 2025 Schedule:
+                            \n📅 Tuesday/Thursday:
+                            • 10:00-11:40: Web Development
+                            • 12:00-1:40: Database Systems
+                            • 5:00-6:15: Computer Networks
+                            
+                            📅 Wednesday:
+                            • 12:00-1:40: Programming Workshop
+                            
+                            💡 Note: No classes scheduled on Mondays/Fridays`,
+                    aya: `Aya's Spring 2025 Schedule:
+                            \n📅 Monday/Wednesday:
+                            • 8:00-9:30: Advanced Programming
+                            • 3:00-4:30: Cybersecurity
+                            
+                            📅 Tuesday/Thursday:
+                            • 9:45-11:15: Database Systems
+                            • 1:15-2:45: Software Engineering
+                            
+                            📅 Friday:
+                            • 8:00-9:30: Web Development
+                            • 1:15-2:45: IT Project Management`,
+                    marie: `Marie-Lie's Spring 2025 Schedule:
+                            \n📅 Tuesday/Thursday:
+                            • 8:00-9:40: Object-Oriented Programming
+                            • 10:00-11:40: Web Programming
+                            
+                            📅 Wednesday:
+                            • 10:00-11:40: Programming Workshop
+                            
+                            📅 Monday/Friday:
+                            • 12:30-1:45: Music Appreciation
+                            • 2:00-3:40: Statistics and Probability`
+                },
+                portal: {
+                    about: `Academic Portal Overview:
+                            \n🌐 Integrated platform for academic resources
+                            \n🔍 Features:
+                            • Research documentation system
+                            • Professional profile management
+                            • Academic scheduling tools
+                            • Interactive learning components
+                            
+                            🛠 Technical Architecture:
+                            • Responsive design (works on all devices)
+                            • Modern UI/UX principles
+                            • Secure data handling
+                            • Continuous updates and improvements`,
+                    contact: `Portal Support Information:
+                            \n📧 Email: portal-support@academic.edu
+                            \n📞 Phone: +1 (555) 123-4567
+                            \n🕒 Hours: Mon-Fri 9am-5pm (local time)
+                            \n📍 Location: Library Building, Room 205
+                            
+                            For student-specific inquiries, please check their individual CVs for contact details.`,
+                    help: `How to Use This Portal:
+                            \n1. Navigation:
+                            • Use the menu boxes to access different sections
+                            • Chatbot available for quick questions
+                            
+                            \n2. Features:
+                            • Research: Academic papers and statistics
+                            • CV: Professional student profiles
+                            • Schedule: Class timetables
+                            
+                            \n3. Tips:
+                            • Bookmark frequently used pages
+                            • Use the chatbot for quick answers
+                            • Check back for regular updates`
+                }
+            };
+
+            function getBotResponse(userMessage) {
+                userMessage = userMessage.toLowerCase();
+                
+                if (/(hello|hi|hey)/i.test(userMessage)) {
+                    return knowledgeBase.greetings[Math.floor(Math.random() * knowledgeBase.greetings.length)]; //randomize the response from the 3 greetings sentences
+                }
+                
+                if (/(bye|goodbye|see you)/i.test(userMessage)) {
+                    return knowledgeBase.farewells[Math.floor(Math.random() * knowledgeBase.farewells.length)]; //randomize the response from the 3 farewells sentences
+                }
+                
+                if (/(thanks|thank you|appreciate)/i.test(userMessage)) {
+                    return knowledgeBase.thanks[Math.floor(Math.random() * knowledgeBase.thanks.length)]; //randomize the response from the 3 thanks sentences
+                }
+                
+				//return chatbot response based on what word the user used in his sentence
+                if (/(research|internet|web|history|statistics)/i.test(userMessage)) {
+                    if (/(infrastructure|backbone|network)/i.test(userMessage)) {
+                        return knowledgeBase.research.infrastructure;
+                    }
+                    else if (/(history|tim berners|www)/i.test(userMessage)) {
+                        return knowledgeBase.research.history;
+                    }
+                    else if (/(statistics|lebanon|middle east)/i.test(userMessage)) {
+                        return knowledgeBase.research.stats;
+                    }
+                    return knowledgeBase.research.general;
+                }
+                
+                if (/(cv|resume|curriculum vitae|profile)/i.test(userMessage)) {
+                    if (/(roya)/i.test(userMessage)) {
+                        return knowledgeBase.cv.roya;
+                    }
+                    else if (/(aya)/i.test(userMessage)) {
+                        return knowledgeBase.cv.aya;
+                    }
+                    else if (/(marie|marie-lie)/i.test(userMessage)) {
+                        return knowledgeBase.cv.marie;
+                    }
+                    return knowledgeBase.cv.general;
+                }
+                
+                if (/(schedule|calendar|classes|timetable)/i.test(userMessage)) {
+                    if (/(roya)/i.test(userMessage)) {
+                        return knowledgeBase.schedule.roya;
+                    }
+                    else if (/(aya)/i.test(userMessage)) {
+                        return knowledgeBase.schedule.aya;
+                    }
+                    else if (/(marie|marie-lie)/i.test(userMessage)) {
+                        return knowledgeBase.schedule.marie;
+                    }
+                    return knowledgeBase.schedule.general;
+                }
+                
+                if (/(portal|system|about)/i.test(userMessage)) {
+                    if (/(contact|support|help)/i.test(userMessage)) {
+                        return knowledgeBase.portal.contact;
+                    }
+                    else if (/(how to|usage|help)/i.test(userMessage)) {
+                        return knowledgeBase.portal.help;
+                    }
+                    return knowledgeBase.portal.about;
+                }
+                
+				//if the user's msg doesn't contain anything from the above words, display one of those 4 default chatbot messages
+                const defaultResponses = [
+                    "I can help with research, CVs, schedules, or general portal questions. What would you like to know?",
+                    "I specialize in academic portal information. Try asking about research, student profiles, or class schedules!",
+                    "Could you clarify your question? I'm here to help with portal-related queries.",
+                    "I can explain research topics, student CVs, academic schedules, and portal features."
+                ];
+                return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+            }
+            
+            function processUserInput() {
+                const message = userInput.value.trim();
+                if(message) { //if the message is added clear input field
+                    addMessage(message, true);
+                    userInput.value = '';
+                    
+					//create the typing three dots effect
+                    const typingIndicator = document.createElement('div'); //create div
+                    typingIndicator.id = 'typing'; //assign ID typing to it
+                    typingIndicator.innerHTML = '<i class="fas fa-ellipsis-h"></i>'; //get the three dots from a library
+                    typingIndicator.classList.add('message', 'bot-message'); //add css styles
+                    chatbotMessages.appendChild(typingIndicator); //add the effect to the bottom of the chat window
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight; //auto scroll to the bottom
+                    
+                    setTimeout(() => {
+                        document.getElementById('typing')?.remove(); //remove the 3 dots effect
+                        const botResponse = getBotResponse(message); //get bot's msg
+                        addMessage(botResponse, false); //add bot's response
+                    }, 1000 + Math.random() * 1000); //waits between 1 - 2 seconds before desplaying the msg after showing the 3 dots effect
+                }
+            }
+            
+			//make chatbot know when to process a msg
+            sendMessage.addEventListener('click', processUserInput); //when clicking on the send button next to the text field
+            
+			//when the user press enter key on the keyboard
+            userInput.addEventListener('keypress', function(e) {
+                if(e.key === 'Enter') {
+                    processUserInput();
+                }
+            });
+            
+            // Back to Top Functionality
+            const backToTop = document.getElementById('backToTop');
+            
+			//shows a back to top button that appears when we scroll down above 300
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+            
+			//when clicking it it takes us back to the top smoothly
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+	<footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>

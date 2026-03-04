@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="allcss.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="body-us">
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-close">
+                <span class="material-icons">close</span>
+            </div>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="Home.html">
+                    <span class="menu-icon material-icons">home</span>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="info l asle.html">
+                    <span class="menu-icon material-icons">search</span>
+                    <span class="menu-text">Research</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="cvpage.html">
+                    <span class="menu-icon material-icons">description</span>
+                    <span class="menu-text">CV</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="schedulepage.html">
+                    <span class="menu-icon material-icons">calendar_today</span>
+                    <span class="menu-text">Schedule</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="media.html">
+                    <span class="menu-icon material-icons">collections</span>
+                    <span class="menu-text">Media</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="contact_us.html">
+                    <span class="menu-icon material-icons">email</span>
+                    <span class="menu-text">Contact</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="quizzespage.html">
+                    <span class="menu-icon material-icons">quiz</span>
+                    <span class="menu-text">Quiz</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-us">
+        <header class="header-us">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Reach out by filling the form below.</p>
+        </header>
+
+        <div class="form-container-us">
+            <h2>Get in Touch</h2>
+            <form id="contactForm-us" action="contactusAction.php" method="POST" autocomplete="off">
+                <label class="label-us" for="name-us">Full Name:</label>
+                <input class="input-us" type="text" id="name-us" name="name" placeholder="Enter your full name" required>
+                <div id="nameError-us" class="error-message-us">Please enter a valid name (letters only)</div>
+
+                <label class="label-us" for="email-us">Email Address:</label>
+                <input class="input-us" type="email" id="email-us" name="email" placeholder="Enter your email" required>
+                <div id="emailError-us" class="error-message-us">Please enter a valid email address</div>
+
+                <label class="label-us" for="number-us">Phone Number:</label>
+                <input class="input-us" type="tel" id="number-us" name="number" placeholder="Enter your phone number">
+                <div id="numberError-us" class="error-message-us">Please enter a valid phone number</div>
+
+                <label class="label-us" for="inquiry-us">Type of Inquiry:</label>
+                <select class="select-us" id="inquiry-us" name="inquiry" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="general">Responsive Web Developing</option>
+                    <option value="support">Content Creation</option>
+                    <option value="business">Communication and Media Support</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="support">Customer Support</option>
+                </select>
+
+                <label class="label-us" for="message-us">Your Message:</label>
+                <textarea class="textarea-us" id="message-us" name="message" rows="4" placeholder="Tell us how we can help..." required></textarea>
+                <div id="messageError-us" class="error-message-us">Please enter your message</div>
+
+                <button class="button-us" type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Menu functionality
+		//grab elements from HTML
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+
+		//add css active class
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.style.display = 'none';
+        }
+
+		//add css active class
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.style.display = 'flex';
+        }
+		
+        menuToggle.addEventListener('click', openMenu); //on click open menu
+        menuClose.addEventListener('click', closeMenu); //on click close menu
+        menuOverlay.addEventListener('click', closeMenu); //darken the background, prevent interation under it
+
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.menu-item a').forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+
+        // Existing form validation script
+		//get HTML for those
+        document.addEventListener('DOMContentLoaded', function() {
+            const formUs = document.getElementById('contactForm-us');
+            const nameInputUs = document.getElementById('name-us');
+            const emailInputUs = document.getElementById('email-us');
+            const numberInputUs = document.getElementById('number-us');
+            const messageInputUs = document.getElementById('message-us');
+            
+            // Real-time validation for name field
+            nameInputUs.addEventListener('input', validateNameUs);
+            
+            // Real-time validation for email field
+            emailInputUs.addEventListener('input', validateEmailUs);
+            
+            // Real-time validation for phone number field
+            numberInputUs.addEventListener('input', validatePhoneNumberUs);
+            
+            // Form submission validation
+            formUs.addEventListener('submit', function(e) {
+                let isValidUs = true; //initialy validation is true
+                
+                if (!validateNameUs()) isValidUs = false;
+                if (!validateEmailUs()) isValidUs = false;
+                if (!validatePhoneNumberUs()) isValidUs = false;
+                if (!validateMessageUs()) isValidUs = false;
+                
+                if (!isValidUs) {
+                    e.preventDefault();
+                }
+            });
+            
+            function validateNameUs() {
+                const nameErrorUs = document.getElementById('nameError-us'); //grab error message element
+                const nameRegexUs = /^[a-zA-ZÀ-ÿ\s'-]+$/; // Allows letters, spaces, hyphens, and apostrophes
+                
+                if (!nameRegexUs.test(nameInputUs.value)) { //if name doesn't match requirements
+                    nameInputUs.classList.add('error-us'); //add red border and show error message
+                    nameErrorUs.style.display = 'block'; 
+                    return false; // validity is false
+                } else { //if em==meets requirements
+                    nameInputUs.classList.remove('error-us'); //remove red border and error message
+                    nameErrorUs.style.display = 'none';
+                    return true; //validity is true
+                }
+            }
+            //same for email
+            function validateEmailUs() {
+                const emailErrorUs = document.getElementById('emailError-us');
+                const emailRegexUs = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!emailRegexUs.test(emailInputUs.value)) {
+                    emailInputUs.classList.add('error-us');
+                    emailErrorUs.style.display = 'block';
+                    return false;
+                } else {
+                    emailInputUs.classList.remove('error-us');
+                    emailErrorUs.style.display = 'none';
+                    return true;
+                }
+            }
+            // same for phone
+            function validatePhoneNumberUs() {
+                const numberErrorUs = document.getElementById('numberError-us');
+                
+                // Only validate if there's input (field is optional)
+                if (numberInputUs.value && !/^[\d\s+-]+$/.test(numberInputUs.value)) {
+                    numberInputUs.classList.add('error-us');
+                    numberErrorUs.style.display = 'block';
+                    return false;
+                } else {
+                    numberInputUs.classList.remove('error-us');
+                    numberErrorUs.style.display = 'none';
+                    return true;
+                }
+            }
+            
+            function validateMessageUs() {
+                const messageErrorUs = document.getElementById('messageError-us');
+                
+                if (messageInputUs.value.trim() === '') { //if empty => error
+                    messageInputUs.classList.add('error-us');
+                    messageErrorUs.style.display = 'block';
+                    return false;
+                } else {
+                    messageInputUs.classList.remove('error-us');
+                    messageErrorUs.style.display = 'none';
+                    return true;
+                }
+            }
+        });
+    </script>
+	
+	<footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Programming Quiz 2</title>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    /* Menu Styles */
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: #2c3e50;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .side-menu {
+      position: fixed;
+      left: -300px;
+      top: 0;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(to bottom, #2c3e50, #34495e);
+      color: white;
+      z-index: 1001;
+      transition: all 0.3s ease;
+      box-shadow: 2px 0 15px rgba(0,0,0,0.2);
+      overflow-y: auto;
+    }
+    
+    .side-menu.active {
+      left: 0;
+    }
+    
+    .menu-header {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .menu-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .menu-close {
+      cursor: pointer;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.3s;
+      font-size: 24px;
+    }
+    
+    .menu-items {
+      padding: 20px 0;
+      margin: 0;
+      list-style: none;
+    }
+    
+    .menu-item {
+      margin: 5px 15px;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .menu-item:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .menu-item a {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .menu-item a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    .menu-icon {
+      margin-right: 15px;
+      font-size: 22px;
+      width: 24px;
+      text-align: center;
+    }
+    
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Quiz Styles */
+    #quiz2-body {
+      font-family: Arial, sans-serif;
+      background: #dceefb;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    #quiz2-header {
+      background: linear-gradient(135deg, #377be0 0%, #7e79d4 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    #quiz2-header h1 {
+      font-size: 2.2rem;
+      margin-top: 10px;
+      font-weight: 600;
+    } 
+    .quiz2-question {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .quiz2-question:hover {
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+    .quiz2-question p {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .quiz2-question label {
+      display: block;
+      margin: 8px 0;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    .quiz2-question label:hover {
+      background-color: #f5f9ff;
+    }
+    .quiz2-text-input {
+      width: 50%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    #quiz2-submit-btn {
+      background-color: #377be0;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 0;
+      transition: all 0.3s ease;
+    }
+    #quiz2-submit-btn:hover {
+      background-color: #7e79d4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .quiz2-text-answer {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    #quiz2-loading {
+      text-align: center;
+      margin: 20px 0;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body id="quiz2-body">
+  <!-- Menu Toggle Button -->
+  <div class="menu-toggle">
+    <span class="material-icons">menu</span>
+  </div>
+
+  <!-- Side Menu -->
+  <div class="side-menu">
+    <div class="menu-header">
+      <div class="menu-title">Menu</div>
+      <div class="menu-close">
+        <span class="material-icons">close</span>
+      </div>
+    </div>
+    
+    <ul class="menu-items">
+      <li class="menu-item">
+        <a href="Home.html">
+          <span class="menu-icon material-icons">home</span>
+          <span class="menu-text">Home</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="info l asle.html">
+          <span class="menu-icon material-icons">search</span>
+          <span class="menu-text">Research</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="cvpage.html">
+          <span class="menu-icon material-icons">description</span>
+          <span class="menu-text">CV</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="schedulepage.html">
+          <span class="menu-icon material-icons">calendar_today</span>
+          <span class="menu-text">Schedule</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="media.html">
+          <span class="menu-icon material-icons">collections</span>
+          <span class="menu-text">Media</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="contactus.html">
+          <span class="menu-icon material-icons">email</span>
+          <span class="menu-text">Contact</span>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="quizzespage.html">
+          <span class="menu-icon material-icons">quiz</span>
+          <span class="menu-text">Quiz</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Overlay -->
+  <div class="menu-overlay"></div>
+
+  <!-- Quiz Content -->
+  <header id="quiz2-header">
+    <h1>🧠 Quiz 2 (Server-side)</h1>
+  </header>
+
+  <form id="quiz2-questions" action="process_quiz2.php" method="post">
+    <div class="quiz2-question">
+      <p>1. What does HTML stand for?</p>
+      <label>
+        <input type="radio" name="q1" value="A" required> 
+        Hyper Trainer Markup Language
+      </label>
+      <label>
+        <input type="radio" name="q1" value="B"> 
+        Hyper Text Marking Language
+      </label>
+      <label>
+        <input type="radio" name="q1" value="C"> 
+        Home Tool Markup Language
+      </label>
+      <label>
+        <input type="radio" name="q1" value="D"> 
+        Hyperlinks and Text Mark Language
+      </label>
+    </div>
+
+    <div class="quiz2-question">
+      <p>2. Which of the following is used to style web pages?</p>
+      <label>
+        <input type="radio" name="q2" value="A" required> 
+        SQL
+      </label>
+      <label>
+        <input type="radio" name="q2" value="B"> 
+        HTML
+      </label>
+      <label>
+        <input type="radio" name="q2" value="C"> 
+        Java
+      </label>
+      <label>
+        <input type="radio" name="q2" value="D"> 
+        CSS
+      </label>
+    </div>
+
+    <div class="quiz2-question">
+      <p>3. Who is known as the father of the World Wide Web?</p>
+      <label>
+        <input type="radio" name="q3" value="A" required> 
+        Steve Jobs
+      </label>
+      <label>
+        <input type="radio" name="q3" value="B"> 
+        Elon Musk
+      </label>
+      <label>
+        <input type="radio" name="q3" value="C"> 
+        Tim Berners-Lee
+      </label>
+      <label>
+        <input type="radio" name="q3" value="D"> 
+        Bill Gates
+      </label>
+    </div>
+
+    <div class="quiz2-question">
+      <p>4. Java and JavaScript are the same thing.</p>
+      <label>
+        <input type="radio" name="q4" value="False" required> 
+        False
+      </label>
+      <label>
+        <input type="radio" name="q4" value="True"> 
+        True
+      </label>
+    </div>
+
+    <div class="quiz2-question">
+      <p>5. Google is an operating system.</p>
+      <label>
+        <input type="radio" name="q5" value="False" required> 
+        False
+      </label>
+      <label>
+        <input type="radio" name="q5" value="True"> 
+        True
+      </label>
+    </div>
+
+    <div class="quiz2-question">
+      <p>6. What does "www" stand for in a website browser?</p>
+      <div class="quiz2-text-answer">
+        <input type="text" name="q6" class="quiz2-text-input" required>
+      </div>
+    </div>
+
+    <div class="quiz2-question">
+      <p>7. What is the brain of the computer?</p>
+      <div class="quiz2-text-answer">
+        <input type="text" name="q7" class="quiz2-text-input" required>
+      </div>
+    </div>
+
+    <div class="quiz2-question">
+      <p>8. Which tag is used for a paragraph in HTML?</p>
+      <div class="quiz2-text-answer">
+        <input type="text" name="q8" class="quiz2-text-input" required>
+      </div>
+    </div>
+
+    <div id="quiz2-loading">
+      <p>Processing your answers...</p>
+      <div style="width: 50px; height: 50px; margin: 0 auto; border: 5px solid #f3f3f3; border-top: 5px solid #377be0; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+    </div>
+
+    <button type="submit" id="quiz2-submit-btn">Submit Quiz</button>
+  </form>
+
+  <script>
+        // Menu functionality
+		//grab elements from HTML
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+
+		//add css active class
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.style.display = 'none';
+        }
+
+		//add css active class
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.style.display = 'flex';
+        }
+		
+        menuToggle.addEventListener('click', openMenu); //on click open menu
+        menuClose.addEventListener('click', closeMenu); //on click close menu
+        menuOverlay.addEventListener('click', closeMenu); //darken the background, prevent interation under it
+
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.menu-item a').forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });
+
+    // Quiz form submission
+    document.getElementById('quiz2-questions').addEventListener('submit', function(e) {
+      document.getElementById('quiz2-loading').style.display = 'block';
+      document.getElementById('quiz2-submit-btn').style.display = 'none';
+    });
+  </script>
+  <footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>

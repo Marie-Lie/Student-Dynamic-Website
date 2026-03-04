@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Lebanon Media</title>
+    <link rel="stylesheet" href="allcss.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="allcss.css">
+</head>
+<body class="body-media">
+    <!-- Menu Toggle Button -->
+    <div class="menu-toggle">
+        <span class="material-icons">menu</span>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="menu-header">
+            <div class="menu-title">MENU</div>
+            <div class="menu-close">
+                <span class="material-icons">close</span>
+            </div>
+        </div>
+        
+        <ul class="menu-items">
+            <li class="menu-item">
+                <a href="Home.html">
+                    <span class="menu-icon material-icons">home</span>
+                    <span class="menu-text">Home</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="info l asle.html">
+                    <span class="menu-icon material-icons">search</span>
+                    <span class="menu-text">Research</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="cvpage.html">
+                    <span class="menu-icon material-icons">description</span>
+                    <span class="menu-text">CV</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="schedulepage.html">
+                    <span class="menu-icon material-icons">calendar_today</span>
+                    <span class="menu-text">Schedule</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="media.html">
+                    <span class="menu-icon material-icons">collections</span>
+                    <span class="menu-text">Media</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="contactus.html">
+                    <span class="menu-icon material-icons">email</span>
+                    <span class="menu-text">Contact</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="quizzespage.html">
+                    <span class="menu-icon material-icons">quiz</span>
+                    <span class="menu-text">Quiz</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <header class="header-media">
+            <h1>Our Lebanon</h1>
+        </header>
+
+        <nav class="nav-media">
+            <button class="active-media" onclick="showSectionMedia('images-media')">Images</button>
+            <button onclick="showSectionMedia('videos-media')">Videos</button>
+            <button onclick="showSectionMedia('music-media')">Music</button>
+        </nav>
+
+        <div class="container-media active-media" id="images-media">
+            <h2 class="h2-media">Image Gallery</h2>
+            <div class="gallery-media">
+                <div class="gallery-item-media">
+                    <img src="baalbak.jpg" alt="Ancient Ruins of Baalbek">
+                </div>
+                <div class="gallery-item-media">
+                    <img src="le.jpg" alt="Lebanese Traditional Village">
+                </div>
+                <div class="gallery-item-media">
+                    <img src="leb.jpg" alt="Mediterranean Coastline">
+                </div>
+                <div class="gallery-item-media">
+                    <img src="liban.jpg" alt="Capital of Lebanon">
+                </div>
+                <div class="gallery-item-media">
+                    <img src="al3a.jpg" alt="Ancient Ruins of Baalbek">
+                </div>
+                <div class="gallery-item-media">
+                    <img src="lebanon.jpg" alt="Ancient Ruins of Baalbek">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-media" id="videos-media">
+            <h2 class="h2-media">Videos</h2>
+            <div class="video-container-media">
+                <div class="video-media">
+                    <iframe src="https://www.youtube.com/embed/6MXPdU5dNOQ" title="YouTube video player" allowfullscreen></iframe>
+                </div>
+                <div class="video-media">
+                    <iframe src="LEBANON VIDEO" title="LEBANON" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-media" id="music-media">
+            <h2 class="h2-media">Music</h2>
+            <div class="music-container-media">
+                <h3>Listen to: "لبناني - عاصي الحلاني"</h3>
+                <audio controls>
+                    <source src="musicliban.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Menu functionality
+		//grab elements from HTML
+        const menuToggle = document.querySelector('.menu-toggle');
+        const sideMenu = document.querySelector('.side-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const menuClose = document.querySelector('.menu-close');
+
+		//add css active class
+        function openMenu() {
+            sideMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            menuToggle.style.display = 'none';
+        }
+
+		//add css active class
+        function closeMenu() {
+            sideMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            menuToggle.style.display = 'flex';
+        }
+		
+        menuToggle.addEventListener('click', openMenu); //on click open menu
+        menuClose.addEventListener('click', closeMenu); //on click close menu
+        menuOverlay.addEventListener('click', closeMenu); //darken the background, prevent interation under it
+
+        // Close menu when clicking a menu item
+        document.querySelectorAll('.menu-item a').forEach(item => {
+            item.addEventListener('click', closeMenu);
+        });tem.addEventListener('click', closeMenu);
+        });
+
+        // Existing media section switching function
+        function showSectionMedia(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.container-media');
+            sections.forEach(section => {
+                section.classList.remove('active-media');
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-media button');
+            buttons.forEach(button => {
+                button.classList.remove('active-media');
+            });
+            
+            // Show selected section and mark button as active
+            document.getElementById(sectionId).classList.add('active-media');
+            event.currentTarget.classList.add('active-media');
+        }
+    </script>
+	<footer>
+    <p>&copy; 2025 Roya, Aya and Marie-lie | This website is a student project | All rights reserved</p> 
+</footer>
+</body>
+</html>
